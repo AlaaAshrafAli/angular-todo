@@ -1,0 +1,15 @@
+<div class="ms-5 mt-5">
+  <input class="form-control d-inline" type="text" [(ngModel)]="newTaskTitle" placeholder="Enter Task Name"/>
+  <button class="btn btn-primary " (click)="addTask()"> + Add </button>
+</div>
+
+<h4 style="margin-left: 3%; color: white; margin-top: 3%;">Your Tasks are:</h4>
+<div *ngFor="let task of tasks; let i = index">
+  <app-task
+    [title]="task.title"
+    [completed]="task.completed"
+    (onUpdate)="updateTask(i, $event)"
+    (onDelete)="deleteTask(i)"
+    (onToggle)="toggleTask(i)">
+  </app-task>
+</div>
